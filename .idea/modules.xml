@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Algorithm.iml" filepath="$PROJECT_DIR$/Algorithm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/algorithm-dp/algorithm-dp.iml" filepath="$PROJECT_DIR$/algorithm-dp/algorithm-dp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/algorithm-search/algorithm-search.iml" filepath="$PROJECT_DIR$/algorithm-search/algorithm-search.iml" />
+      <module fileurl="file://$PROJECT_DIR$/algorithm-sort/algorithm-sort.iml" filepath="$PROJECT_DIR$/algorithm-sort/algorithm-sort.iml" />
+    </modules>
+  </component>
+</project>
