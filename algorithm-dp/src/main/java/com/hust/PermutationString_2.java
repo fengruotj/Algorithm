@@ -41,6 +41,7 @@ public class PermutationString_2 {
     }
 
     private boolean isSwap(char[] chars, int low, int k){
+        //左闭又开区间
         for (int i = low; i < k; i++){
             if (chars[i] == chars[k])
                 return false;

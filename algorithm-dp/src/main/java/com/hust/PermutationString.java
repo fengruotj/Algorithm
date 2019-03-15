@@ -19,18 +19,18 @@ public class PermutationString {
         return list;
     }
 
-    private void permutationStringHelper(char[] chars, int low, int high) {
-        if(low == high) {
+    private void permutationStringHelper(char[] chars,int low, int high){
+        if(low==high) {
             list.add(String.valueOf(chars));
             return;
         }
-        for (int k = low; k <= high; k++) {
-            swap(chars,low,k);
+
+        for (int i = low; i <=high ; i++) {
+            swap(chars,low,i);
             permutationStringHelper(chars,low+1,high);
-            swap(chars,k,low);
+            swap(chars,i,low);
         }
     }
-
     private void swap(char[] chars, int i, int k) {
         char temp=chars[k];
         chars[k]=chars[i];
