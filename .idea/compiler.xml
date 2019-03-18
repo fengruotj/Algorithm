@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="algorithm-divide" />
         <module name="algorithm-dp" />
+        <module name="algorithm-recursion" />
         <module name="algorithm-search" />
         <module name="algorithm-sort" />
       </profile>
@@ -16,6 +17,7 @@
       <module name="Algorithm" target="1.8" />
       <module name="algorithm-divide" target="1.8" />
       <module name="algorithm-dp" target="1.8" />
+      <module name="algorithm-recursion" target="1.8" />
       <module name="algorithm-search" target="1.8" />
       <module name="algorithm-sort" target="1.8" />
       <module name="algorithmsort" target="1.8" />

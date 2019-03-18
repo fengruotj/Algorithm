@@ -13,6 +13,7 @@
     <module>algorithm-search</module>
     <module>algorithm-dp</module>
       <module>algorithm-divide</module>
+    <module>algorithm-recursion</module>
   </modules>
 
   <name>Algorithm</name>
