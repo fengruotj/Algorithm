@@ -3,6 +3,7 @@ package com.hust;
 /**
  * locate com.hust
  * Created by MasterTj on 2019/3/15.
+ * 最大连续子序列的和
  */
 public class MaxSubSequence {
     public static int maxSubSequence(int A[]){

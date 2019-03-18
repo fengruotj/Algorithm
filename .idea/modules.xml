@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Algorithm.iml" filepath="$PROJECT_DIR$/Algorithm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/algorithm-divide/algorithm-divide.iml" filepath="$PROJECT_DIR$/algorithm-divide/algorithm-divide.iml" />
       <module fileurl="file://$PROJECT_DIR$/algorithm-dp/algorithm-dp.iml" filepath="$PROJECT_DIR$/algorithm-dp/algorithm-dp.iml" />
       <module fileurl="file://$PROJECT_DIR$/algorithm-search/algorithm-search.iml" filepath="$PROJECT_DIR$/algorithm-search/algorithm-search.iml" />
       <module fileurl="file://$PROJECT_DIR$/algorithm-sort/algorithm-sort.iml" filepath="$PROJECT_DIR$/algorithm-sort/algorithm-sort.iml" />

@@ -12,6 +12,7 @@
     <module>algorithm-sort</module>
     <module>algorithm-search</module>
     <module>algorithm-dp</module>
+      <module>algorithm-divide</module>
   </modules>
 
   <name>Algorithm</name>
