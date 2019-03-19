@@ -80,7 +80,7 @@ public class AWMGraph {
     //私有函数，广度优先遍历
     private void broadFirstSearch(boolean[] isVisited,int i) {
         int u,w;
-        LinkedList queue=new LinkedList();
+        LinkedList<Integer> queue=new LinkedList<>();
 
         //访问结点i
         System.out.print(getValueByIndex(i)+"  ");
@@ -88,7 +88,7 @@ public class AWMGraph {
         //结点入队列
         queue.addLast(i);
         while (!queue.isEmpty()) {
-            u=((Integer)queue.removeFirst()).intValue();
+            u=queue.removeFirst();
             w=getFirstNeighbor(u);
             while(w!=-1) {
                 if(!isVisited[w]) {
