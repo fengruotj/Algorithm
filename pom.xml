@@ -14,6 +14,7 @@
     <module>algorithm-dp</module>
       <module>algorithm-divide</module>
     <module>algorithm-recursion</module>
+      <module>algorithm-graph</module>
   </modules>
 
   <name>Algorithm</name>

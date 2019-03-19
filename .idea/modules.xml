@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/Algorithm.iml" filepath="$PROJECT_DIR$/Algorithm.iml" />
       <module fileurl="file://$PROJECT_DIR$/algorithm-divide/algorithm-divide.iml" filepath="$PROJECT_DIR$/algorithm-divide/algorithm-divide.iml" />
       <module fileurl="file://$PROJECT_DIR$/algorithm-dp/algorithm-dp.iml" filepath="$PROJECT_DIR$/algorithm-dp/algorithm-dp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/algorithm-graph/algorithm-graph.iml" filepath="$PROJECT_DIR$/algorithm-graph/algorithm-graph.iml" />
       <module fileurl="file://$PROJECT_DIR$/algorithm-recursion/algorithm-recursion.iml" filepath="$PROJECT_DIR$/algorithm-recursion/algorithm-recursion.iml" />
       <module fileurl="file://$PROJECT_DIR$/algorithm-search/algorithm-search.iml" filepath="$PROJECT_DIR$/algorithm-search/algorithm-search.iml" />
       <module fileurl="file://$PROJECT_DIR$/algorithm-sort/algorithm-sort.iml" filepath="$PROJECT_DIR$/algorithm-sort/algorithm-sort.iml" />
