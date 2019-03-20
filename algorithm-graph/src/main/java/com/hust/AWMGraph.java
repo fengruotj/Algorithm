@@ -1,7 +1,6 @@
 package com.hust;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.*;
 
 /**
  * locate com.hust
@@ -62,6 +61,16 @@ public class AWMGraph {
         }
     }
 
+    private List<Integer> getNeighbors(int v1){
+        List<Integer> arrayList=new ArrayList<>();
+        int w=getFirstNeighbor(v1);
+        while (w!=-1){
+            arrayList.add(w);
+            w=getNextNeighbor(v1,w);
+        }
+        return arrayList;
+    }
+
     private Object getValueByIndex(int i) {
         return vertexList.get(i);
     }
@@ -117,5 +126,86 @@ public class AWMGraph {
 
     private int getNumOfVertex() {
         return numOfEdges;
+    }
+
+    public HashMap<Integer,Node>  djstra(int v1,boolean isVisited[]){
+        //最小堆保存未访问的节点
+        PriorityQueue<Node> minHeap=new PriorityQueue<>();
+
+        HashMap<Integer,Node> hashMap=new HashMap<>();
+        for (int i = 0; i < vertexList.size(); i++) {
+            Node node = new Node(i, getValueByIndex(i));
+            hashMap.put(i,node);
+            minHeap.add(node);
+        }
+
+        Node node=hashMap.get(v1);
+        node.des=0;
+        minHeap.add(node);
+
+        while (!minHeap.isEmpty()){
+            Node poll = minHeap.poll();
+            int v = poll.v;
+            isVisited[v]=true;
+
+            for (Integer w : getNeighbors(v)) {
+                //如果没有访问则访问
+                if(!isVisited[w]) {
+                    Node wNode = hashMap.get(w);
+                    if (poll.des + edges[v][w] < wNode.des) {
+                        wNode.des = poll.des + edges[v][w];
+                        if(wNode.path.equals("")) {
+                            wNode.path += poll.v;
+                        }else {
+                            wNode.path += " " + poll.v;
+                        }
+                    }
+                }
+            }
+        }
+        return hashMap;
+    }
+
+    private class Node implements Comparable<Node>{
+        public int v;
+        public Object vertex;
+        public int des=Integer.MAX_VALUE;
+        //保存最后的路径
+        public String path;
+
+        public Node(int v, Object vertex) {
+            this.v = v;
+            this.vertex = vertex;
+            path= "";
+        }
+
+        @Override
+        public int compareTo(Node o) {
+            return this.v-o.v;
+        }
+
+        @Override
+        public String toString() {
+            return "Node{" +
+                    "v=" + v +
+                    ", vertex=" + vertex +
+                    ", des=" + des +
+                    ", path='" + path + '\'' +
+                    '}';
+        }
+    }
+
+    public static void main(String[] args) {
+        AWMGraph awmGraph=new AWMGraph(4);
+        awmGraph.insertVertex("A");
+        awmGraph.insertVertex("B");
+        awmGraph.insertVertex("C");
+        awmGraph.insertVertex("D");
+        awmGraph.insertEdge(0,1,5);
+        awmGraph.insertEdge(0,2,6);
+        awmGraph.insertEdge(1,3,10);
+        awmGraph.insertEdge(2,3,5);
+        HashMap<Integer, Node> djstra = awmGraph.djstra(0, new boolean[4]);
+        System.out.println(djstra);
     }
 }
