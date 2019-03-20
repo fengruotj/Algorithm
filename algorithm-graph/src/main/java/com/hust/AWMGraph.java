@@ -5,15 +5,18 @@ import java.util.*;
 /**
  * locate com.hust
  * Created by mastertj on 2019/3/20.
+ * 图 邻接矩阵方式实现
  */
 public class AWMGraph {
     private ArrayList vertexList;//存储点的链表
+    private List<Edge> edgeList;//存储边的链表
     private int[][] edges;//邻接矩阵，用来存储边
     private int numOfEdges;//边的数目
 
     public AWMGraph(int num) {
         edges=new int[num][num];
         vertexList=new ArrayList(num);
+        edgeList=new ArrayList<>();
         numOfEdges=0;
     }
 
@@ -23,6 +26,7 @@ public class AWMGraph {
 
     public void insertEdge(int v1,int v2,int weight){
         edges[v1][v2]=weight;
+        edgeList.add(new Edge(v1,v2,weight));
     }
 
     //得到第一个邻接结点的下标
@@ -128,6 +132,12 @@ public class AWMGraph {
         return numOfEdges;
     }
 
+    /**
+     * 单源最短路径算法
+     * @param v1
+     * @param isVisited
+     * @return
+     */
     public HashMap<Integer,Node>  djstra(int v1,boolean isVisited[]){
         //最小堆保存未访问的节点
         PriorityQueue<Node> minHeap=new PriorityQueue<>();
@@ -166,6 +176,49 @@ public class AWMGraph {
         return hashMap;
     }
 
+    /**
+     * 找到树的最小生成树算法
+     * @return
+     */
+    public List<Edge> kruskal(){
+        // 定义一个一维数组，下标为连线的起点，值为连线的终点
+        int[] parent = new int[edgeList.size()];
+        List<Edge> resultList=new ArrayList<>();
+        Collections.sort(edgeList, new Comparator<Edge>() {
+            @Override
+            public int compare(Edge o1, Edge o2) {
+                return o1.weight-o2.weight;
+            }
+        });
+        int sum=0;
+        for(Edge edge:edgeList){
+            int start = kruskalHelper(edge.v1, parent);
+            int end = kruskalHelper(edge.v2, parent);
+            if(start!=end){
+                //不在同一个最小生成树中，可以放入结果中
+                resultList.add(edge);
+                // 没有产生回环则将临时数组中，起点为下标，终点为值
+                parent[start]=end;
+                sum+=edge.weight;
+            }
+        }
+        System.out.println("最小生成树的权值为："+sum);
+        return resultList;
+    }
+
+    /**
+     * kruskal辅助函数 找到生成树的连线的终点
+     * @param index
+     * @param parent
+     * @return
+     */
+    public int kruskalHelper(int index,int[] parent){
+        while (parent[index]>0){
+            index=parent[index];
+        }
+        return index;
+    }
+
     private class Node implements Comparable<Node>{
         public int v;
         public Object vertex;
@@ -195,6 +248,27 @@ public class AWMGraph {
         }
     }
 
+    private class Edge{
+        public int v1;
+        public int v2;
+        public int weight;
+
+        public Edge(int v1, int v2, int weight) {
+            this.v1 = v1;
+            this.v2 = v2;
+            this.weight = weight;
+        }
+
+        @Override
+        public String toString() {
+            return "Edge{" +
+                    "v1=" + v1 +
+                    ", v2=" + v2 +
+                    ", weight=" + weight +
+                    '}';
+        }
+    }
+
     public static void main(String[] args) {
         AWMGraph awmGraph=new AWMGraph(4);
         awmGraph.insertVertex("A");
@@ -207,5 +281,8 @@ public class AWMGraph {
         awmGraph.insertEdge(2,3,5);
         HashMap<Integer, Node> djstra = awmGraph.djstra(0, new boolean[4]);
         System.out.println(djstra);
+
+        List<Edge> kruskal = awmGraph.kruskal();
+        System.out.println(kruskal);
     }
 }
