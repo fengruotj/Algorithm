@@ -123,14 +123,14 @@ public class AMWGraphClone {
 
             for (Integer w : getNeighbors(v)) {
                 //如果没有访问则访问
-                if(!isVisited[w]) {
-                    Node wNode = hashMap.get(w);
+                Node wNode = hashMap.get(w);
+                if(minHeap.contains(wNode)) {
                     if (poll.des + edges[v][w] < wNode.des) {
                         wNode.des = poll.des + edges[v][w];
                         if(wNode.path.equals("")) {
-                            wNode.path += poll.v;
+                            wNode.path = wNode.path + poll.v;
                         }else {
-                            wNode.path += " " + poll.v;
+                            wNode.path = " " + poll.v;
                         }
                     }
                 }
