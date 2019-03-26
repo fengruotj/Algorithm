@@ -15,7 +15,7 @@ public class HeapSort {
 
     public boolean isLeaf(int length,int pos)
     {
-        return pos>length/2-1;
+        return 2*pos+1>=length;
     }
 
     public void shiftdown(int nums[],int length,int pos)
@@ -24,10 +24,11 @@ public class HeapSort {
         {
             int left=2*pos+1,right=2*pos+2;
             if(right<length)
-                left=nums[left]>nums[right]?right:left;
+                left=nums[left]>nums[right]?left:right;
 
             //需要删除
-            if(nums[left]>nums[pos]) return ;
+            if(nums[left]<=nums[pos]) return ;
+
             swap(nums,pos,left);
             pos=left;
         }
@@ -52,8 +53,8 @@ public class HeapSort {
         for(int i=nums.length;i>0;i--)
         {
             buildHeap(nums,i);
+            System.out.println(nums[0]);
             swap(nums,0,i-1);
-            System.out.println(nums[i-1]);
         }
     }
 
